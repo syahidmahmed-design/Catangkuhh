@@ -1,0 +1,371 @@
+<!-- Tombol Musik Spesial Anti-Gagal -->
+<div class="fixed top-3 right-3 z-50">
+    <button onclick="toggleAudio()" id="musicBtn" class="glassmorphism bg-white/90 px-4 py-2.5 rounded-full shadow-lg flex items-center space-x-2 text-pink-600 font-bold text-xs border border-pink-300 active:scale-95 transition cursor-pointer">
+        <i id="musicIcon" class="fa-solid fa-play animate-bounce"></i>
+        <span id="musicText">Putar Lagu 🎵</span>
+    </button>
+    <audio id="myAudio" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/relaxing_music.ogg" type="audio/ogg">
+    </audio>
+</div>
+
+<!-- Script khusus untuk tombol musik ini -->
+<script>
+    function toggleAudio() {
+        const audio = document.getElementById('myAudio');
+        const icon = document.getElementById('musicIcon');
+        const text = document.getElementById('musicText');
+        
+        if (audio.paused) {
+            audio.play().then(() => {
+                icon.className = "fa-solid fa-pause text-pink-500";
+                text.innerText = "Lagu Diputar 🎶";
+            }).catch(e => {
+                alert("Ketuk sekali lagi untuk memutar musik ya!");
+            });
+        } else {
+            audio.pause();
+            icon.className = "fa-solid fa-play animate-bounce";
+            text.innerText = "Putar Lagu 🎵";
+        }
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Untuk Cayangkuhh ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Quicksand -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#ffd1dc',
+                        pastelPeach: '#ffe5b4',
+                        pastelLavender: '#e6e6fa',
+                        pastelPurple: '#d8b4fe',
+                        softWhite: '#fff9fb'
+                    },
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffe5b4 50%, #e6e6fa 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-15px) rotate(8deg); opacity: 1; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        }
+
+        .floating-particle {
+            position: absolute;
+            animation: float 4s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Click Heart Animation */
+        @keyframes popUp {
+            0% { transform: scale(0.5) translateY(0); opacity: 1; }
+            100% { transform: scale(1.5) translateY(-60px); opacity: 0; }
+        }
+        .click-heart {
+            position: absolute;
+            animation: popUp 0.8s ease-out forwards;
+            pointer-events: none;
+            font-size: 24px;
+            z-index: 999;
+        }
+
+        /* Vinyl Spin */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin 6s linear infinite;
+        }
+
+        /* Card Flip */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.active .flip-card-inner,
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-700 relative flex flex-col items-center p-4 md:p-8">
+
+    <!-- Floating Background Particles -->
+    <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Mini Music Player (Fixed Top Right) -->
+    
+    <!-- Hidden Audio Element -->
+    
+
+    <!-- Main Container -->
+    <main class="w-full max-w-4xl z-10 flex flex-col items-center space-y-12 py-8">
+
+        <!-- 1. HERO SECTION -->
+        <section id="heroSection" class="text-center glassmorphism w-full p-8 md:p-14 rounded-3xl shadow-lg mt-6">
+            <div class="inline-block bg-pink-100 text-pink-600 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold mb-4 shadow-sm animate-pulse">
+                ✨ Spesial Untuk Pacar Tersayang ✨
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+                Halo, <span class="text-pink-500">Cayangkuhh</span>ku! 💕
+            </h1>
+            <p class="text-base md:text-lg text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
+                Website interaktif penuh cinta ini khusus aku buat untuk Cintakuhh, Cantikuhh, dan Jenongkuhh-nya aku tercinta.
+            </p>
+            <button onclick="bukaKonten()" class="bg-gradient-to-r from-pink-400 to-purple-400 text-white font-bold px-8 py-3.5 rounded-full shadow-lg hover:shadow-pink-300/50 active:scale-95 transition transform duration-300 cursor-pointer">
+                Buka Sesuatu ✨
+            </button>
+        </section>
+
+        <!-- CONTENT WRAPPER -->
+        <main id="mainContent" class="w-full space-y-12" style="display: none;">
+
+            <!-- 2. LOVE COUNTER SECTION -->
+            <section class="glassmorphism p-6 md:p-8 rounded-3xl text-center shadow-lg">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Hitungan Cinta Kita 💕</h2>
+                <p class="text-sm text-gray-500 mb-6">Waktu indah yang kita lewati bersama sejak 5 Mei 2023</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                    <div class="bg-white/70 p-4 rounded-2xl shadow-sm">
+                        <span id="countYears" class="text-2xl md:text-3xl font-bold text-pink-500">0</span>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 mt-1 font-semibold">Tahun</p>
+                    </div>
+                    <div class="bg-white/70 p-4 rounded-2xl shadow-sm">
+                        <span id="countMonths" class="text-2xl md:text-3xl font-bold text-purple-500">0</span>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 mt-1 font-semibold">Bulan</p>
+                    </div>
+                    <div class="bg-white/70 p-4 rounded-2xl shadow-sm">
+                        <span id="countDays" class="text-2xl md:text-3xl font-bold text-pink-500">0</span>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 mt-1 font-semibold">Hari</p>
+                    </div>
+                    <div class="bg-white/70 p-4 rounded-2xl shadow-sm">
+                        <span id="countHours" class="text-2xl md:text-3xl font-bold text-purple-500">0</span>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 mt-1 font-semibold">Jam</p>
+                    </div>
+                    <div class="bg-white/70 p-4 rounded-2xl shadow-sm col-span-2 md:col-span-1">
+                        <span id="countMinutes" class="text-2xl md:text-3xl font-bold text-pink-500">0</span>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 mt-1 font-semibold">Menit</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. PHOTO UPLOAD & GALLERY SECTION (Maksimal 3 Foto) -->
+            <section class="glassmorphism p-6 md:p-8 rounded-3xl text-center shadow-lg space-y-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-1">Galeri Kenangan Kita 📸</h2>
+                    <p class="text-sm text-gray-500">Upload hingga 3 foto spesial kamu dan Cayangkuhh di sini ya!</p>
+                </div>
+
+                <!-- Tombol Upload -->
+                <div>
+                    <input type="file" id="photoInput" accept="image/*" multiple class="hidden" onchange="handlePhotoUpload(event)">
+                    <button onclick="document.getElementById('photoInput').click()" class="bg-gradient-to-r from-purple-400 to-pink-400 text-white font-bold px-6 py-3 rounded-full shadow-md hover:scale-105 active:scale-95 transition cursor-pointer text-sm">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Pilih Maksimal 3 Foto ✨
+                    </button>
+                </div>
+              <!-- Galeri Foto Permanen -->
+<section class="glassmorphism p-6 md:p-8 rounded-3xl text-center shadow-lg space-y-6">
+    <div>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-1">Galeri Kenangan Kita 📸</h2>
+        <p class="text-sm text-gray-500">Kenangan indah kita berdua selamanya ✨</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+        <!-- Foto 1 -->
+        <div class="bg-white p-3 pb-6 rounded-2xl shadow-md transform rotate-1 hover:rotate-0 transition duration-300">
+            <div class="w-full h-48 rounded-xl overflow-hidden bg-gray-100">
+                <img src="https://i.ibb.co.com/j9LJK9V0/IMG-20261002-131152.jpg" class="w-full h-full object-cover">
+            </div>
+            <p class="text-xs font-bold text-gray-600 mt-3">Cantikuhh & Cayangkuhh 💖</p>
+        </div>
+        
+        <!-- Foto 2 -->
+        <div class="bg-white p-3 pb-6 rounded-2xl shadow-md transform -rotate-1 hover:rotate-0 transition duration-300">
+            <div class="w-full h-48 rounded-xl overflow-hidden bg-gray-100">
+                <img src="https://i.ibb.co.com/PnZwqqB/IMG-20261002-131115.jpg" class="w-full h-full object-cover">
+            </div>
+            <p class="text-xs font-bold text-gray-600 mt-3">Cintakuhh tersayang ✨</p>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="bg-white p-3 pb-6 rounded-2xl shadow-md transform rotate-2 hover:rotate-0 transition duration-300">
+            <div class="w-full h-48 rounded-xl overflow-hidden bg-gray-100">
+                <img src="https://i.ibb.co.com/0jd3PG0j/IMG-20261002-131139.jpg" class="w-full h-full object-cover">
+            </div>
+            <p class="text-xs font-bold text-gray-600 mt-3">Jenongkuhh gemesin 🥰</p>
+        </div>
+    </div>
+</section>
+
+
+                <!-- Grid Polaroid Foto -->
+                <div id="photoGallery" class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+                    <!-- Placeholder 1 -->
+               >
+                    <!-- Placeholder 3 -->
+                    <div 
+
+            <!-- 4. REASONS I LOVE YOU SECTION -->
+            <section class="space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Alasan Aku Mencintaimu ✨</h2>
+                    <p class="text-sm text-gray-500">Ketuk kartu di bawah ini ya, Cantikuhh!</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Reason 1 -->
+                    <div class="flip-card h-48 cursor-pointer" onclick="toggleCard(this)">
+                        <div class="flip-card-inner relative w-full h-full text-center rounded-3xl shadow-md">
+                            <div class="flip-card-front glassmorphism rounded-3xl flex flex-col items-center justify-center p-6 border border-white">
+                                <i class="fa-solid fa-face-smile-beam text-4xl text-pink-400 mb-3"></i>
+                                <h3 class="font-bold text-lg text-gray-800">Senyumanmu</h3>
+                                <p class="text-xs text-pink-500 mt-1 font-medium">(Ketuk untuk buka)</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-pink-400 to-purple-400 text-white rounded-3xl flex items-center justify-center p-6 shadow-md">
+                                <p class="text-sm font-medium">Senyum kamu lucu bangettt pengen gigitt, Cantikuhh!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 2 -->
+                    <div class="flip-card h-48 cursor-pointer" onclick="toggleCard(this)">
+                        <div class="flip-card-inner relative w-full h-full text-center rounded-3xl shadow-md">
+                            <div class="flip-card-front glassmorphism rounded-3xl flex flex-col items-center justify-center p-6 border border-white">
+                                <i class="fa-solid fa-heart-pulse text-4xl text-purple-400 mb-3"></i>
+                                <h3 class="font-bold text-lg text-gray-800">Perhatianmu</h3>
+                                <p class="text-xs text-purple-500 mt-1 font-medium">(Ketuk untuk buka)</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-purple-400 to-pink-400 text-white rounded-3xl flex items-center justify-center p-6 shadow-md">
+                                <p class="text-sm font-medium">makasihh juga perhatian nya cintaku aku merasa jadi orang paling beruntung punya Cayangkuhh.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 3 -->
+                    <div class="flip-card h-48 cursor-pointer" onclick="toggleCard(this)">
+                        <div class="flip-card-inner relative w-full h-full text-center rounded-3xl shadow-md">
+                            <div class="flip-card-front glassmorphism rounded-3xl flex flex-col items-center justify-center p-6 border border-white">
+                                <i class="fa-solid fa-laugh-squint text-4xl text-pink-400 mb-3"></i>
+                                <h3 class="font-bold text-lg text-gray-800">Ketawamu</h3>
+                                <p class="text-xs text-pink-500 mt-1 font-medium">(Ketuk untuk buka)</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-pink-400 to-purple-400 text-white rounded-3xl flex items-center justify-center p-6 shadow-md">
+                                <p class="text-sm font-medium">Suara ketawa kamu itu candu banget, selalu sukses bikin aku gemes dan senyum-senyum sendiri.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reason 4 -->
+                    <div class="flip-card h-48 cursor-pointer" onclick="toggleCard(this)">
+                        <div class="flip-card-inner relative w-full h-full text-center rounded-3xl shadow-md">
+                            <div class="flip-card-front glassmorphism rounded-3xl flex flex-col items-center justify-center p-6 border border-white">
+                                <i class="fa-solid fa-face-grin-hearts text-4xl text-purple-400 mb-3"></i>
+                                <h3 class="font-bold text-lg text-gray-800">Jenongkuhh-ku</h3>
+                                <p class="text-xs text-purple-500 mt-1 font-medium">(Ketuk untuk buka)</p>
+                            </div>
+                            <div class="flip-card-back bg-gradient-to-br from-purple-400 to-pink-400 text-white rounded-3xl flex items-center justify-center p-6 shadow-md">
+                                <p class="text-sm font-medium">Semua hal tentang Jenongkuhh-ku tersayang ini benar-benar tidak ada duanya di dunia! maafin juga aku nyahhh selalu egoiisss a</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. THE ULTIMATE QUESTION SECTION -->
+            <section class="glassmorphism p-8 md:p-12 rounded-3xl text-center shadow-lg relative overflow-hidden">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Pertanyaan Penting Nih! 🧐</h2>
+                <p id="questionText" class="text-lg font-medium text-gray-700 mb-8">Kamu sayang kan sama aku, Cintakuhh?</p>
+                
+                <div id="buttonContainer" class="flex items-center justify-center space-x-6 relative min-h-[90px]">
+                    <button id="yesBtn" onclick="handleYesClick()" class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold px-8 py-3.5 rounded-full shadow-lg hover:scale-110 active:scale-95 transition transform duration-300 z-20 cursor-pointer">
+                        Sayang Banget 💖
+                    </button>
+                    <button id="noBtn" class="bg-gray-200 text-gray-600 font-bold px-8 py-3.5 rounded-full shadow hover:bg-gray-300 active:scale-95 transition z-20 cursor-pointer">
+                        Enggak 😜
+                    </button>
+                </div>
+            </section>
+
+            <!-- 6. SECRET LOVE LETTER TRIGGER -->
+            <div class="text-center pt-2 pb-8">
+                <button onclick="openModal()" class="glassmorphism px-8 py-4 rounded-2xl text-pink-600 font-bold shadow-md hover:bg-white/90 hover:scale-105 active:scale-95 transition flex items-center justify-center mx-auto space-x-3 border border-pink-200 cursor-pointer">
+                    <i class="fa-solid fa-envelope-open-text text-xl"></i>
+                    <span>Buka Surat Cinta Rahasia Untuk Jenongkuhh 💌</span>
+                </button>
+            </div>
+
+        </main>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-xs text-gray-500 mt-6 mb-4 z-10 text-center">
+        Made with lots of ❤️ for Cayangkuhh, Cintakuhh, Cantikuhh & Jenongkuhh tercinta.
+    </footer>
+
+    <!-- MODAL SURAT CINTA -->
+    <div id="loveModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 p-4">
+        <div id="modalContent" class="glassmorphism bg-white/95 max-w-lg w-full p-8 rounded-3xl shadow-2xl transform scale-95 transition-transform duration-300 relative border border-pink-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold w-8 h-8 rounded-full bg-white/50 flex items-center justify-center cursor-pointer">
+                &times;
+            </button>
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-envelope-heart text-4xl text-pink-500 mb-2"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Untuk Jenongkuhh Tersayang</h3>
+                <span class="text-xs text-pink-500 font-semibold">5 Mei 2024 - Selaman
